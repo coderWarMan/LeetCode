@@ -1,0 +1,36 @@
+class Solution {
+    public int myAtoi(String str) {
+        if(str==null)return 0;
+        str=str.trim();
+        int len=str.length();
+        if(len==0)return 0;
+        String r="";
+        int i=0;
+        char f=str.charAt(i);
+        int flag=1;
+        if(f=='-'){
+            flag=-1;
+            i++;
+        } else if(f=='+'){
+            flag=1;
+            i++;
+        }else if(!Character.isDigit(f)){
+            return 0;
+        }
+        for(;i<len;i++){
+            if(Character.isDigit(str.charAt(i))){
+                r+=str.charAt(i);
+            }else break;
+        }
+        try{
+            if(r.length()==0)return 0;
+            int result=Integer.parseInt(r);
+            if(flag==-1)return -result;
+            else return result;
+        }catch(Exception e){
+            if(flag==-1){
+                return Integer.MIN_VALUE;
+            }else return Integer.MAX_VALUE;
+        }
+    }
+}
