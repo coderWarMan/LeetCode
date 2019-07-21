@@ -1,0 +1,18 @@
+class Solution {
+    public int reverse(int x) {
+        StringBuffer sb=new StringBuffer();
+         sb.append(String.valueOf(Math.abs(x)));
+        String s= sb.reverse().toString();
+        try{
+            int r=Integer.parseInt(s.trim());
+            if(x<0){
+                return -r;
+             }else if(x>0){
+                 return r;
+             }else return 0;
+        }catch(Exception e){
+            return 0;
+        }
+        
+    }
+}
