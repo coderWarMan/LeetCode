@@ -1,0 +1,51 @@
+class Solution {
+    public String reverseOnlyLetters(String S) {
+        if(S == null || S.length() ==0){
+            return S;
+        }
+        char[] temp = S.toCharArray();
+        int j=S.length()-1;
+        StringBuilder sb = new StringBuilder();
+        for(char c:temp){
+            if(Character.isLetter(c)){
+                while(!Character.isLetter(temp[j]))--j;
+                sb.append(temp[j--]);
+            }else{
+                sb.append(c);
+            }
+        }
+        
+        return sb.toString();
+        
+    }
+}
+
+/****************************/
+class Solution {
+    public String reverseOnlyLetters(String S) {
+        if(S == null || S.length() ==0){
+            return S;
+        }
+        int i=0;
+        int j=S.length()-1;
+        char[] temp = S.toCharArray();
+        while(i<=j){
+            if(!Character.isLetter(S.charAt(i))){
+                ++i;
+                continue;
+            }
+            if(!Character.isLetter(S.charAt(j))){
+                --j;
+                continue;
+            }
+            char c = temp[i];
+            temp[i] = temp[j];
+            temp[j] = c;
+            ++i;
+            --j;
+        }
+        
+        return new String(temp);
+        
+    }
+}
