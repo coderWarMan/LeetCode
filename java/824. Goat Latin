@@ -1,0 +1,79 @@
+class Solution {
+    public String toGoatLatin(String S) {
+        if(S == null || S.length() ==0){
+            return S;
+        }
+        StringBuilder sb = new StringBuilder();
+        String temp = "";
+        String[] strs = S.split(" ");
+        for(String str : strs){
+            char first = str.charAt(0);
+            if(isVowel(first)){
+                sb.append(str);   
+            }else{
+                sb.append(str.substring(1)+first);
+            }
+            temp +="a";
+            sb.append("ma").append(temp).append(" ");
+        }
+        return sb.toString().trim();
+    }
+    private boolean isVowel(char c){
+        return (c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||c=='A'||c=='E'||c=='I'||c=='U'||c=='O');
+    }
+}
+/****************************************/
+class Solution {
+    public String toGoatLatin(String S) {
+        if(S == null || S.length() ==0){
+            return S;
+        }
+        StringBuilder sb = new StringBuilder();
+        Set<Character> vowel = new HashSet<Character>();
+        for(char c:new char[]{'a','e','i','o','u','A','E','I','O','U'}){
+            vowel.add(c);
+        }
+        String[] strs = S.split(" ");
+        for(int i=0; i<strs.length; i++){
+            char first = strs[i].charAt(0);
+            if(vowel.contains(first)){
+                sb.append(strs[i]);
+            }else{
+                sb.append(strs[i].substring(1)+strs[i].substring(0,1));
+            }
+            sb.append("ma");
+            for(int j=0; j< i+1; j++){
+                sb.append("a");
+            }
+            sb.append(" ");
+        }
+        sb.deleteCharAt(sb.length()-1);   
+        return sb.toString();
+    }
+}
+/****************************************/
+
+class Solution {
+    public String toGoatLatin(String S) {
+        if(S == null || S.length() ==0){
+            return S;
+        }
+        StringBuilder sb = new StringBuilder();
+        String temp = "";
+        String[] strs = S.split(" ");
+        for(String str : strs){
+            char first = str.charAt(0);
+            if(isVowel(first)){
+                sb.append(str);   
+            }else{
+                sb.append(str.substring(1)+first);
+            }
+            temp +="a";
+            sb.append("ma").append(temp).append(" ");
+        }
+        return sb.toString().trim();
+    }
+    private boolean isVowel(char c){
+        return (c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||c=='A'||c=='E'||c=='I'||c=='U'||c=='O');
+    }
+}
